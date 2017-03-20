@@ -8,20 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		2FDEB1C41E7FC59A009797DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1C31E7FC59A009797DF /* AppDelegate.swift */; };
-		2FDEB1C61E7FC59A009797DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1C51E7FC59A009797DF /* ViewController.swift */; };
 		2FDEB1C91E7FC59A009797DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FDEB1C71E7FC59A009797DF /* Main.storyboard */; };
 		2FDEB1CB1E7FC59A009797DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FDEB1CA1E7FC59A009797DF /* Assets.xcassets */; };
 		2FDEB1CE1E7FC59A009797DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FDEB1CC1E7FC59A009797DF /* LaunchScreen.storyboard */; };
+		2FDEB1D61E7FC8F6009797DF /* RoughCode in Resources */ = {isa = PBXBuildFile; fileRef = 2FDEB1D51E7FC8F6009797DF /* RoughCode */; };
+		2FDEB1DC1E7FD55B009797DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1DB1E7FD55B009797DF /* ViewController.swift */; };
+		2FDEB1DF1E7FD5AF009797DF /* ServerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1DE1E7FD5AF009797DF /* ServerApi.swift */; };
+		2FDEB1E11E7FD8DE009797DF /* ParseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1E01E7FD8DE009797DF /* ParseSerialization.swift */; };
+		2FDEB1E31E7FD95F009797DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1E21E7FD95F009797DF /* Constants.swift */; };
+		2FDEB1E51E7FE670009797DF /* PodCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1E41E7FE670009797DF /* PodCast.swift */; };
+		2FDEB1E91E7FF7B6009797DF /* PodCastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1E81E7FF7B6009797DF /* PodCastTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2FDEB1C01E7FC59A009797DF /* AudioPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDEB1C31E7FC59A009797DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2FDEB1C51E7FC59A009797DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2FDEB1C81E7FC59A009797DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FDEB1CA1E7FC59A009797DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FDEB1CD1E7FC59A009797DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FDEB1CF1E7FC59A009797DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FDEB1D51E7FC8F6009797DF /* RoughCode */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoughCode; sourceTree = "<group>"; };
+		2FDEB1DB1E7FD55B009797DF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2FDEB1DE1E7FD5AF009797DF /* ServerApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerApi.swift; sourceTree = "<group>"; };
+		2FDEB1E01E7FD8DE009797DF /* ParseSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSerialization.swift; sourceTree = "<group>"; };
+		2FDEB1E21E7FD95F009797DF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2FDEB1E41E7FE670009797DF /* PodCast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodCast.swift; sourceTree = "<group>"; };
+		2FDEB1E81E7FF7B6009797DF /* PodCastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodCastTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +50,7 @@
 		2FDEB1B71E7FC59A009797DF = {
 			isa = PBXGroup;
 			children = (
+				2FDEB1D51E7FC8F6009797DF /* RoughCode */,
 				2FDEB1C21E7FC59A009797DF /* AudioPlayer */,
 				2FDEB1C11E7FC59A009797DF /* Products */,
 			);
@@ -54,14 +67,51 @@
 		2FDEB1C21E7FC59A009797DF /* AudioPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				2FDEB1D71E7FD55B009797DF /* CutomClass */,
+				2FDEB1D81E7FD55B009797DF /* ServerApi */,
+				2FDEB1D91E7FD55B009797DF /* ViewControllers */,
 				2FDEB1C31E7FC59A009797DF /* AppDelegate.swift */,
-				2FDEB1C51E7FC59A009797DF /* ViewController.swift */,
 				2FDEB1C71E7FC59A009797DF /* Main.storyboard */,
 				2FDEB1CA1E7FC59A009797DF /* Assets.xcassets */,
 				2FDEB1CC1E7FC59A009797DF /* LaunchScreen.storyboard */,
 				2FDEB1CF1E7FC59A009797DF /* Info.plist */,
 			);
 			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		2FDEB1D71E7FD55B009797DF /* CutomClass */ = {
+			isa = PBXGroup;
+			children = (
+				2FDEB1E01E7FD8DE009797DF /* ParseSerialization.swift */,
+				2FDEB1E21E7FD95F009797DF /* Constants.swift */,
+			);
+			path = CutomClass;
+			sourceTree = "<group>";
+		};
+		2FDEB1D81E7FD55B009797DF /* ServerApi */ = {
+			isa = PBXGroup;
+			children = (
+				2FDEB1DE1E7FD5AF009797DF /* ServerApi.swift */,
+			);
+			path = ServerApi;
+			sourceTree = "<group>";
+		};
+		2FDEB1D91E7FD55B009797DF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2FDEB1DB1E7FD55B009797DF /* ViewController.swift */,
+				2FDEB1DA1E7FD55B009797DF /* Models */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2FDEB1DA1E7FD55B009797DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2FDEB1E41E7FE670009797DF /* PodCast.swift */,
+				2FDEB1E81E7FF7B6009797DF /* PodCastTableViewCell.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FDEB1CE1E7FC59A009797DF /* LaunchScreen.storyboard in Resources */,
+				2FDEB1D61E7FC8F6009797DF /* RoughCode in Resources */,
 				2FDEB1CB1E7FC59A009797DF /* Assets.xcassets in Resources */,
 				2FDEB1C91E7FC59A009797DF /* Main.storyboard in Resources */,
 			);
@@ -136,8 +187,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FDEB1C61E7FC59A009797DF /* ViewController.swift in Sources */,
+				2FDEB1E31E7FD95F009797DF /* Constants.swift in Sources */,
+				2FDEB1E11E7FD8DE009797DF /* ParseSerialization.swift in Sources */,
+				2FDEB1E51E7FE670009797DF /* PodCast.swift in Sources */,
+				2FDEB1DC1E7FD55B009797DF /* ViewController.swift in Sources */,
 				2FDEB1C41E7FC59A009797DF /* AppDelegate.swift in Sources */,
+				2FDEB1E91E7FF7B6009797DF /* PodCastTableViewCell.swift in Sources */,
+				2FDEB1DF1E7FD5AF009797DF /* ServerApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +353,7 @@
 				2FDEB1D41E7FC59A009797DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

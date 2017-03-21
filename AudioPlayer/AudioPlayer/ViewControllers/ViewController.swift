@@ -12,8 +12,7 @@ class ViewController: UIViewController{
     
     fileprivate var podCastInfo:[PodCast] = []
     @IBOutlet weak var tblView: UITableView!
-    fileprivate var imageData:Data?
-    fileprivate var imageStoreInfo = [Int:Any]()
+    var indexValueToPass: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +29,7 @@ class ViewController: UIViewController{
                     self.tblView.reloadData()
                 }
             }
-            
         }
-        DocumentDirectory.createDirectory()
-        let directoryPath = DocumentDirectory.getDirectoryPath()
-        print("Path: " + (directoryPath as String))
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     
@@ -61,37 +55,33 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell") as! PodCastTableViewCell
         let podCast = self.podCastInfo[indexPath.row]
-        var img = UIImage(named:"")
-        
-        cell.artistName.text = podCast.description
-        cell.trackName.text = podCast.title
-        
-        if DocumentDirectory.ifFileExist(index: indexPath.row){
-            img = DocumentDirectory.getImage(index: indexPath.row)
-            cell.iconImage.image = img
-        }
-        else{
-        DispatchQueue.global(qos: .background).async {
-            
-            let url = URL(string: podCast.imgUrl!)
-            self.imageData = try? Data(contentsOf: url!)
-            self.imageStoreInfo[indexPath.row] = self.imageData
-            img =  UIImage(data: self.imageData!)!
-            DocumentDirectory.saveImageDocumentDirectory(image: img!, index: indexPath.row)
-            DispatchQueue.main.async {
-            cell.iconImage.image = img
-            }
-        }
-        }
-        
+        cell.tag = indexPath.row
+        cell.podCast = podCast
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // cell selected code here
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        
+//        indexValueToPass = indexPath.row
+//        performSegue(withIdentifier: "yourSegueIdentifer", sender: self)
+//        //let destination = MusicViewController() // Your destination
+//        //navigationController?.pushViewController(destination, animated: true)
+//    }
+//    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "yourSegueIdentifer") {
+            
+            let navController = segue.destination as! UINavigationController
+            let detailController = navController.topViewController as! MusicViewController
+            
+            detailController.passedValue = tblView.indexPathForSelectedRow?.row
+            detailController.podCastInfo = podCastInfo
+        }
     }
     
-    
-    
 }
+
+
+
+
 

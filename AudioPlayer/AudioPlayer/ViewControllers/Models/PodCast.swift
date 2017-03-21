@@ -13,4 +13,10 @@ class PodCast{
     var description:String?
     var podCastUrl:String?
     var imgUrl:String?
+    var fileUrl:String?
+    
+    init(){
+    
+    }
+    
 }

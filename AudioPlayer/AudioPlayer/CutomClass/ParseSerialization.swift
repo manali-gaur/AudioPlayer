@@ -17,17 +17,20 @@ class ParseSerialization {
             do{
                 var PodcastData = [PodCast]()
                 if let jsonArray = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)  as? [String:Any]{
+                    
                    
                     let jsonArray = jsonArray["results"] as? [[String:Any]]
                     for jsonObj in jsonArray!{
+                        
+                        //let item = PodCast()
                         let podCast = PodCast()
                         podCast.title = jsonObj["artistName"] as? String
                         podCast.description = jsonObj["trackName"] as? String
                         podCast.imgUrl = jsonObj["artworkUrl100"] as? String
                         podCast.podCastUrl = jsonObj["trackViewUrl"] as? String
+                        
                         PodcastData.append(podCast)
                     }
-                    
                 }
                 
                 completion(PodcastData)

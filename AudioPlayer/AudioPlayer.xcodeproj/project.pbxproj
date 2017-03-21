@@ -19,6 +19,7 @@
 		2FDEB1E51E7FE670009797DF /* PodCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1E41E7FE670009797DF /* PodCast.swift */; };
 		2FDEB1E91E7FF7B6009797DF /* PodCastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1E81E7FF7B6009797DF /* PodCastTableViewCell.swift */; };
 		2FDEB1EB1E8065E2009797DF /* DocumentDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1EA1E8065E2009797DF /* DocumentDirectory.swift */; };
+		2FDEB1ED1E8126F4009797DF /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1EC1E8126F4009797DF /* MusicViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,8 @@
 		2FDEB1E21E7FD95F009797DF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2FDEB1E41E7FE670009797DF /* PodCast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodCast.swift; sourceTree = "<group>"; };
 		2FDEB1E81E7FF7B6009797DF /* PodCastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodCastTableViewCell.swift; sourceTree = "<group>"; };
-		2FDEB1EA1E8065E2009797DF /* DocumentDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentDirectory.swift; sourceTree = "<group>"; };
+		2FDEB1EA1E8065E2009797DF /* DocumentDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentDirectory.swift; path = ../ViewControllers/Models/DocumentDirectory.swift; sourceTree = "<group>"; };
+		2FDEB1EC1E8126F4009797DF /* MusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		2FDEB1D71E7FD55B009797DF /* CutomClass */ = {
 			isa = PBXGroup;
 			children = (
+				2FDEB1EA1E8065E2009797DF /* DocumentDirectory.swift */,
 				2FDEB1E01E7FD8DE009797DF /* ParseSerialization.swift */,
 				2FDEB1E21E7FD95F009797DF /* Constants.swift */,
 			);
@@ -102,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				2FDEB1DB1E7FD55B009797DF /* ViewController.swift */,
+				2FDEB1EC1E8126F4009797DF /* MusicViewController.swift */,
 				2FDEB1DA1E7FD55B009797DF /* Models */,
 			);
 			path = ViewControllers;
@@ -112,7 +116,6 @@
 			children = (
 				2FDEB1E41E7FE670009797DF /* PodCast.swift */,
 				2FDEB1E81E7FF7B6009797DF /* PodCastTableViewCell.swift */,
-				2FDEB1EA1E8065E2009797DF /* DocumentDirectory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				2FDEB1DC1E7FD55B009797DF /* ViewController.swift in Sources */,
 				2FDEB1C41E7FC59A009797DF /* AppDelegate.swift in Sources */,
 				2FDEB1E91E7FF7B6009797DF /* PodCastTableViewCell.swift in Sources */,
+				2FDEB1ED1E8126F4009797DF /* MusicViewController.swift in Sources */,
 				2FDEB1EB1E8065E2009797DF /* DocumentDirectory.swift in Sources */,
 				2FDEB1DF1E7FD5AF009797DF /* ServerApi.swift in Sources */,
 			);

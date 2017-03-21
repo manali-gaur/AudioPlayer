@@ -1,52 +1,15 @@
  Tasks for today
 -------------------
+* coredata stack,model a class,savecontext,fetch the items 
+*
 
-* Create a documentDirectory and store the image
-
-
-Rough Code
-///////////
-func saveImageDocumentDirectory(){
-    let fileManager = NSFileManager.defaultManager()
-    let paths = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString).stringByAppendingPathComponent("apple.jpg")
-    let image = UIImage(named: "apple.jpg")
-    print(paths)
-    let imageData = UIImageJPEGRepresentation(image!, 0.5)
-    fileManager.createFileAtPath(paths as String, contents: imageData, attributes: nil)
+NSURLSession.sharedSession().downloadTaskWithURL(audioUrl, completionHandler: { (location, response, error) -> Void in
+guard let location = location where error == nil else { return }
+do {
+// after downloading your file you need to move it to your destination url
+try NSFileManager().moveItemAtURL(location, toURL: destinationUrl)
+print("File moved to documents folder")
+} catch let error as NSError {
+print(error.localizedDescription)
 }
-
-func createDirectory(){
-    let fileManager = NSFileManager.defaultManager()
-    let paths = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString).stringByAppendingPathComponent("customDirectory")
-    if !fileManager.fileExistsAtPath(paths){
-        try! fileManager.createDirectoryAtPath(paths, withIntermediateDirectories: true, attributes: nil)
-    }else{
-        print("Already dictionary created.")
-    }
-}
-
-func getDirectoryPath() -> String {
-    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-    let documentsDirectory = paths[0]
-    return documentsDirectory
-}
-
-func deleteDirectory(){
-    let fileManager = NSFileManager.defaultManager()
-    let paths = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString).stringByAppendingPathComponent("customDirectory")
-    if fileManager.fileExistsAtPath(paths){
-    try! fileManager.removeItemAtPath(paths)
-    }else{
-        print("Something wrong.")
-    }
-}
-
-func getImage(){
-    let fileManager = NSFileManager.defaultManager()
-    let imagePAth = (self.getDirectoryPath() as NSString).stringByAppendingPathComponent("apple.jpg")
-    if fileManager.fileExistsAtPath(imagePAth){
-        self.imageView.image = UIImage(contentsOfFile: imagePAth)
-    }else{
-        print("No Image")
-    }
-}
+}).resume()

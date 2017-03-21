@@ -30,15 +30,15 @@ class ViewController: UIViewController{
                     self.tblView.reloadData()
                 }
             }
-          
+            
         }
         DocumentDirectory.createDirectory()
         let directoryPath = DocumentDirectory.getDirectoryPath()
-        print("Path: " + directoryPath)
+        print("Path: " + (directoryPath as String))
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,29 +61,29 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell") as! PodCastTableViewCell
         let podCast = self.podCastInfo[indexPath.row]
+        var img = UIImage(named:"")
         
-       
         cell.artistName.text = podCast.description
         cell.trackName.text = podCast.title
         
+        if DocumentDirectory.ifFileExist(index: indexPath.row){
+            img = DocumentDirectory.getImage(index: indexPath.row)
+            cell.iconImage.image = img
+        }
+        else{
         DispatchQueue.global(qos: .background).async {
             
             let url = URL(string: podCast.imgUrl!)
-            let img:UIImage
-            if self.imageStoreInfo[indexPath.row] == nil {
-                self.imageData = try? Data(contentsOf: url!)
-                self.imageStoreInfo[indexPath.row] = self.imageData
-                img =  UIImage(data: self.imageData!)!
-                DocumentDirectory.saveImageDocumentDirectory(image: img, index: indexPath.row)
-            }
-            else{
-                img = DocumentDirectory.getImage(index: indexPath.row)
-            }
+            self.imageData = try? Data(contentsOf: url!)
+            self.imageStoreInfo[indexPath.row] = self.imageData
+            img =  UIImage(data: self.imageData!)!
+            DocumentDirectory.saveImageDocumentDirectory(image: img!, index: indexPath.row)
             DispatchQueue.main.async {
-                cell.iconImage.image = img
+            cell.iconImage.image = img
             }
         }
-    
+        }
+        
         return cell
     }
     

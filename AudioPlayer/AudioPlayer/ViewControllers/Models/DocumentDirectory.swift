@@ -10,41 +10,51 @@ import UIKit
 
 class DocumentDirectory{
     
-   class func createDirectory(){
+   class func createDirectory()->NSString{
         let fileManager = FileManager.default
-        let paths = getDirectoryPath().appending("customDirectory")  
+        let paths = getDirectoryPath().appendingPathComponent("CustomDirectory")
+
         if !fileManager.fileExists(atPath: paths){
             try! fileManager.createDirectory(atPath: paths, withIntermediateDirectories: true, attributes: nil)
         }else{
             print("Already dictionary created.")
         }
+       return paths as NSString
     }
     
-   class func getDirectoryPath() -> String {
+   class func getDirectoryPath() -> NSString {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0]
+        let documentsDirectory = paths[0] as NSString
         return documentsDirectory
     }
     
    class func saveImageDocumentDirectory(image: UIImage, index: Int){
-        let fileManager = FileManager.default
+        //let fileManager = FileManager.default
         let imageName = "image"+String(index)+".jpg"
-        let path = getDirectoryPath().appending(imageName)
+        let path = createDirectory().appendingPathComponent(imageName)
         print(path)
         let imageData = UIImageJPEGRepresentation(image, 0.5)
-        fileManager.createFile(atPath: path as String, contents: imageData, attributes: nil)
+        do{
+        try imageData?.write(to: URL(fileURLWithPath:path))
+       }catch{}
+    
     }
     
-    class func getImage(index: Int) -> UIImage{
+    class func ifFileExist(index: Int)->Bool{
         let fileManager = FileManager.default
         let imageName = "image"+String(index)+".jpg"
-        var image = UIImage(named: "")
-        let imagePath = (DocumentDirectory.getDirectoryPath() as NSString).appendingPathComponent(imageName)
+        let imagePath = createDirectory().appendingPathComponent(imageName)
         if fileManager.fileExists(atPath: imagePath){
-            image = UIImage(contentsOfFile: imagePath)!
+           return true
         }else{
-            print("No Image")
+            return false
         }
+    }
+    class func getImage(index: Int) -> UIImage{
+        let imageName = "image"+String(index)+".jpg"
+        var image = UIImage(named: "")
+        let imagePath = createDirectory().appendingPathComponent(imageName)
+        image = UIImage(contentsOfFile: imagePath)
         return image!
     }
 }

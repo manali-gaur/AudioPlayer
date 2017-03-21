@@ -13,6 +13,7 @@ class ViewController: UIViewController{
     fileprivate var podCastInfo:[PodCast] = []
     @IBOutlet weak var tblView: UITableView!
     fileprivate var imageData:Data?
+    fileprivate var imageStoreInfo = [Int:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,9 @@ class ViewController: UIViewController{
             }
           
         }
+        DocumentDirectory.createDirectory()
+        let directoryPath = DocumentDirectory.getDirectoryPath()
+        print("Path: " + directoryPath)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -65,9 +69,16 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
         DispatchQueue.global(qos: .background).async {
             
             let url = URL(string: podCast.imgUrl!)
-            self.imageData = try? Data(contentsOf: url!)
-            let img =  UIImage(data: self.imageData!)
-            
+            let img:UIImage
+            if self.imageStoreInfo[indexPath.row] == nil {
+                self.imageData = try? Data(contentsOf: url!)
+                self.imageStoreInfo[indexPath.row] = self.imageData
+                img =  UIImage(data: self.imageData!)!
+                DocumentDirectory.saveImageDocumentDirectory(image: img, index: indexPath.row)
+            }
+            else{
+                img = DocumentDirectory.getImage(index: indexPath.row)
+            }
             DispatchQueue.main.async {
                 cell.iconImage.image = img
             }
@@ -79,5 +90,8 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // cell selected code here
     }
+    
+    
+    
 }
 

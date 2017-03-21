@@ -18,6 +18,7 @@
 		2FDEB1E31E7FD95F009797DF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1E21E7FD95F009797DF /* Constants.swift */; };
 		2FDEB1E51E7FE670009797DF /* PodCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1E41E7FE670009797DF /* PodCast.swift */; };
 		2FDEB1E91E7FF7B6009797DF /* PodCastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1E81E7FF7B6009797DF /* PodCastTableViewCell.swift */; };
+		2FDEB1EB1E8065E2009797DF /* DocumentDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEB1EA1E8065E2009797DF /* DocumentDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		2FDEB1E21E7FD95F009797DF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2FDEB1E41E7FE670009797DF /* PodCast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodCast.swift; sourceTree = "<group>"; };
 		2FDEB1E81E7FF7B6009797DF /* PodCastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodCastTableViewCell.swift; sourceTree = "<group>"; };
+		2FDEB1EA1E8065E2009797DF /* DocumentDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentDirectory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			children = (
 				2FDEB1E41E7FE670009797DF /* PodCast.swift */,
 				2FDEB1E81E7FF7B6009797DF /* PodCastTableViewCell.swift */,
+				2FDEB1EA1E8065E2009797DF /* DocumentDirectory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				2FDEB1DC1E7FD55B009797DF /* ViewController.swift in Sources */,
 				2FDEB1C41E7FC59A009797DF /* AppDelegate.swift in Sources */,
 				2FDEB1E91E7FF7B6009797DF /* PodCastTableViewCell.swift in Sources */,
+				2FDEB1EB1E8065E2009797DF /* DocumentDirectory.swift in Sources */,
 				2FDEB1DF1E7FD5AF009797DF /* ServerApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

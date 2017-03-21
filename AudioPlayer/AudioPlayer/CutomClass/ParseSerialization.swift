@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ParseSerialization: NSObject {
+class ParseSerialization {
     
     static let instance = ParseSerialization()
     

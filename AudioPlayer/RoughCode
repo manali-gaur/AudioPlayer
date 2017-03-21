@@ -1,31 +1,52 @@
  Tasks for today
 -------------------
 
-*  Hit a url use nsurlsession and model the objects feed it a tableView
-*  Json serliazation
-*  Model object will have title,description,imageUrl,mp3file.
+* Create a documentDirectory and store the image
 
 
 Rough Code
 ///////////
-if data != nil {
-    var error: NSError?
-    if let jsonString = NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: &error) as? String {
-        if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
-            if let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? NSDictionary {
-                println(json)
-            }
-            else {
-                println("unable to parse dictionary out of inner JSON: \(error)")
-                println("jsonString = \(jsonString)")
-            }
-        }
-    }
-    else {
-        println("unable to parse main JSON string: \(error)")
-        println("data = \(NSString(data: data, encoding: NSUTF8StringEncoding))")
+func saveImageDocumentDirectory(){
+    let fileManager = NSFileManager.defaultManager()
+    let paths = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString).stringByAppendingPathComponent("apple.jpg")
+    let image = UIImage(named: "apple.jpg")
+    print(paths)
+    let imageData = UIImageJPEGRepresentation(image!, 0.5)
+    fileManager.createFileAtPath(paths as String, contents: imageData, attributes: nil)
+}
+
+func createDirectory(){
+    let fileManager = NSFileManager.defaultManager()
+    let paths = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString).stringByAppendingPathComponent("customDirectory")
+    if !fileManager.fileExistsAtPath(paths){
+        try! fileManager.createDirectoryAtPath(paths, withIntermediateDirectories: true, attributes: nil)
+    }else{
+        print("Already dictionary created.")
     }
 }
-else {
-    println("network error: \(error)")
+
+func getDirectoryPath() -> String {
+    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    let documentsDirectory = paths[0]
+    return documentsDirectory
+}
+
+func deleteDirectory(){
+    let fileManager = NSFileManager.defaultManager()
+    let paths = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString).stringByAppendingPathComponent("customDirectory")
+    if fileManager.fileExistsAtPath(paths){
+    try! fileManager.removeItemAtPath(paths)
+    }else{
+        print("Something wrong.")
+    }
+}
+
+func getImage(){
+    let fileManager = NSFileManager.defaultManager()
+    let imagePAth = (self.getDirectoryPath() as NSString).stringByAppendingPathComponent("apple.jpg")
+    if fileManager.fileExistsAtPath(imagePAth){
+        self.imageView.image = UIImage(contentsOfFile: imagePAth)
+    }else{
+        print("No Image")
+    }
 }

@@ -59,15 +59,7 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
         cell.podCast = podCast
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        indexValueToPass = indexPath.row
-//        performSegue(withIdentifier: "yourSegueIdentifer", sender: self)
-//        //let destination = MusicViewController() // Your destination
-//        //navigationController?.pushViewController(destination, animated: true)
-//    }
-//    
+       
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "yourSegueIdentifer") {
             

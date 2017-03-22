@@ -24,9 +24,14 @@ class PodCastTableViewCell: UITableViewCell {
             self.artistName.text = podCast?.description
             self.trackName.text = podCast?.title
             
+            iconImage.layer.shadowColor = UIColor.white.cgColor
+            iconImage.layer.shadowOffset = CGSize(width: 2, height: 2)
+            iconImage.layer.shadowOpacity = 0.5;
+            iconImage.layer.shadowRadius = 7.0;
+            
             var img = UIImage(named:"")
-            if DocumentDirectory.ifFileExist(fileName:(URL(string:(podCast?.imgUrl)!)?.lastPathComponent)!,item:.podCast){
-            self.iconImage.image = DocumentDirectory.getImage(fileName:(URL(string:(podCast?.imgUrl)!)?.lastPathComponent)!)
+            if DocumentDirectory.ifFileExist(fileName:((URL(string:(podCast?.imgUrl)!)?.lastPathComponent)!)+String(self.tag),item:.podCast){
+            self.iconImage.image = DocumentDirectory.getImage(fileName:((URL(string:(podCast?.imgUrl)!)?.lastPathComponent)!)+String(self.tag))
             }
             else{
                 DispatchQueue.global(qos: .background).async {
@@ -35,7 +40,7 @@ class PodCastTableViewCell: UITableViewCell {
                     self.imageData = try? Data(contentsOf: url!)
                     self.imageStoreInfo[self.tag] = self.imageData
                     img =  UIImage(data: self.imageData!)!
-                    DocumentDirectory.saveInDocumentDirectory(data: self.imageData!,fileName: (fileName:(URL(string:(self.podCast?.imgUrl)!)?.lastPathComponent)!+".jpg"), directoryType: SwitchItems.podCast)
+                    DocumentDirectory.saveInDocumentDirectory(data: self.imageData!,fileName: (fileName:((URL(string:(self.podCast?.imgUrl)!)?.lastPathComponent)!)+String(self.tag)+".jpg"), directoryType: SwitchItems.podCast)
                     DispatchQueue.main.async {
                         self.iconImage.image = img
                     }

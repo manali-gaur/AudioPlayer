@@ -26,61 +26,56 @@ class MusicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.passedValue != nil {
-            musicArtistName.text = podCastInfo[self.passedValue].description!
-            musicTrackName.text = podCastInfo[self.passedValue].title!
-            //musicImage.image = DocumentDirectory.getImage(fileName:(URL(string:(podCastInfo[self.passedValue].imgUrl)!)?.lastPathComponent)!)
+        musicArtistName.textAlignment = NSTextAlignment.center
+        musicTrackName.textAlignment = NSTextAlignment.center
+        if passedValue != nil {
+            musicArtistName.text = podCastInfo[passedValue].description!
+            musicTrackName.text = podCastInfo[passedValue].title!
+            musicImage.image = DocumentDirectory.getImage(fileName:((URL(string:(podCastInfo[passedValue].imgUrl)!)?.lastPathComponent)!)+String(passedValue)+".jpg")
+            getSong()
         }
-        getSong()
     }
     
     
-    @IBAction func playMusic(_ sender: Any) {
+    @IBAction func playMusic(_ sender: UIButton) {
         if audioPlayer.isPlaying {
+            sender.setImage(UIImage(named: "play.png"), for: UIControlState.normal)
             audioPlayer.pause()
         } else {
+            sender.setImage(UIImage(named: "pause.png"), for: UIControlState.normal)
             audioPlayer.play()
         }
     }
     
     func getSong(){
         let imgAbsolutePath = (URL(string:(podCastInfo[self.passedValue].podCastUrl)!)?.lastPathComponent)!
-        
-        if DocumentDirectory.ifFileExist(fileName:imgAbsolutePath+".mp3",item: .MusicPlayer){
-            
-            let url = URL(fileURLWithPath: DocumentDirectory.getPodCast(fileName: imgAbsolutePath+".mp3"))
-            do{
-                try audioPlayer = AVAudioPlayer(contentsOf: url)
-                audioPlayer.play()
-            }
-            catch{}
+        var url: URL!
+        var songUrl: URL!
+        if DocumentDirectory.ifFileExist(fileName:imgAbsolutePath,item: .MusicPlayer){
+            url = URL(fileURLWithPath: DocumentDirectory.getPodCast(fileName: imgAbsolutePath))
+            playSong(url: url)
         }else{
             DispatchQueue.global(qos: .background).async {
-                let url = URL(string: (self.podCastInfo[self.passedValue].podCastUrl)!)
+                songUrl = URL(string: (self.podCastInfo[self.passedValue].podCastUrl)!)!
+                self.songData = try? Data(contentsOf: songUrl)
+                self.songStoreInfo[self.passedValue] = self.songData
                 
-                URLSession.shared.downloadTask(with: url!, completionHandler: { (location, response, error) -> Void in
-                    guard let location = location, error == nil else { return }
-                    do{
-                        let path = DocumentDirectory.createDirectory(directoryType: .MusicPlayer).appendingPathComponent(imgAbsolutePath+".m4a")
-                        
-                        let url = URL(fileURLWithPath:path)
-                        
-                        try FileManager().moveItem(at:location, to: url)
-                        
-                        try self.audioPlayer = AVAudioPlayer(contentsOf: url)
-                        
-                        self.audioPlayer.play()
-                        
-                        self.audioPlayer.volume = 1
-                      
-                    } catch{
-                        print("This is an error")
-                    }
-                }).resume()
+                DocumentDirectory.saveInDocumentDirectory(data: self.songData!,fileName:imgAbsolutePath, directoryType: SwitchItems.MusicPlayer)
+                DispatchQueue.main.async {
+                    url = URL(fileURLWithPath: DocumentDirectory.getPodCast(fileName: imgAbsolutePath))
+                    self.playSong(url: url)
+                }
             }
         }
     }
     
+    func playSong(url:URL){
+        do{
+            try self.audioPlayer = AVAudioPlayer(contentsOf: url)
+            self.audioPlayer.play()
+        }catch{}
+
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

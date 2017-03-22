@@ -27,7 +27,7 @@ class ParseSerialization {
                         podCast.title = jsonObj["artistName"] as? String
                         podCast.description = jsonObj["trackName"] as? String
                         podCast.imgUrl = jsonObj["artworkUrl100"] as? String
-                        podCast.podCastUrl = jsonObj["trackViewUrl"] as? String
+                        podCast.podCastUrl = jsonObj["previewUrl"] as? String
                         
                         PodcastData.append(podCast)
                     }

@@ -3,13 +3,24 @@
 * coredata stack,model a class,savecontext,fetch the items 
 *
 
-NSURLSession.sharedSession().downloadTaskWithURL(audioUrl, completionHandler: { (location, response, error) -> Void in
-guard let location = location where error == nil else { return }
-do {
-// after downloading your file you need to move it to your destination url
-try NSFileManager().moveItemAtURL(location, toURL: destinationUrl)
-print("File moved to documents folder")
-} catch let error as NSError {
-print(error.localizedDescription)
+/*  let url = URL(string: (self.podCastInfo[self.passedValue].podCastUrl)!)
+
+URLSession.shared.downloadTask(with: url!, completionHandler: { (location, response, error) -> Void in
+guard let location = location, error == nil else { return }
+do{
+let path = DocumentDirectory.createDirectory(directoryType: .MusicPlayer).appendingPathComponent(imgAbsolutePath+".m4a")
+
+let url = URL(fileURLWithPath:path)
+
+try FileManager().moveItem(at:location, to: url)
+
+try self.audioPlayer = AVAudioPlayer(contentsOf: url)
+
+self.audioPlayer.play()
+
+self.audioPlayer.volume = 1
+
+} catch{
+print("This is an error")
 }
-}).resume()
+}).resume()*/

@@ -39,13 +39,15 @@ class DocumentDirectory{
     
     class func saveInDocumentDirectory(data: Data, fileName: String, directoryType: SwitchItems){
         
-            let songName = fileName
-            let path = createDirectory(directoryType: directoryType).appendingPathComponent(songName)
-            print(path)
-            let songData = data
+            let itemName = fileName
+            let path = createDirectory(directoryType: directoryType).appendingPathComponent(itemName)
+            //print(path)
+            let itemData = data
             do{
-                try songData.write(to: URL(fileURLWithPath:path))
-            }catch{}
+                try itemData.write(to: URL(fileURLWithPath:path))
+            }catch{
+           print("This is an error")
+        }
     }
     
     class func ifFileExist(fileName: String,item: SwitchItems)->Bool{

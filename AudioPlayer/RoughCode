@@ -1,7 +1,21 @@
  Tasks for today
 -------------------
-* coredata stack,model a class,savecontext,fetch the items 
-*
+
+* Coredata stack,model a class,savecontext,fetch the items
+
+* Moving all the controls to singleton
+
+* Branch creation,works will in source tree,giving multiple permission,check your ssh keys whether it is in par with your source control.
+
+* Create a new repository in git your proj.
+
+* Rechability in swift.
+
+* Protocols and delegates,Notification
+
+
+self.popViewController
+
 
 /*  let url = URL(string: (self.podCastInfo[self.passedValue].podCastUrl)!)
 

@@ -28,12 +28,7 @@ class MusicViewController: UIViewController {
         super.viewDidLoad()
         musicArtistName.textAlignment = NSTextAlignment.center
         musicTrackName.textAlignment = NSTextAlignment.center
-        if passedValue != nil {
-            musicArtistName.text = podCastInfo[passedValue].description!
-            musicTrackName.text = podCastInfo[passedValue].title!
-            musicImage.image = DocumentDirectory.getImage(fileName:((URL(string:(podCastInfo[passedValue].imgUrl)!)?.lastPathComponent)!)+String(passedValue)+".jpg")
-            getSong()
-        }
+        initialize(passedValue: passedValue)
     }
     
     
@@ -45,6 +40,24 @@ class MusicViewController: UIViewController {
             sender.setImage(UIImage(named: "pause.png"), for: UIControlState.normal)
             audioPlayer.play()
         }
+    }
+    
+    @IBAction func nextSong(_ sender: Any) {
+        if self.passedValue == podCastInfo.count-1{
+            self.passedValue = 0
+        }else{
+            self.passedValue = self.passedValue+1
+        }
+        initialize(passedValue: self.passedValue)
+    }
+    
+    @IBAction func previousSong(_ sender: Any) {
+        if self.passedValue == 0{
+            self.passedValue = podCastInfo.count-1
+        }else{
+            self.passedValue = self.passedValue-1
+        }
+        initialize(passedValue: self.passedValue)
     }
     
     func getSong(){
@@ -75,6 +88,17 @@ class MusicViewController: UIViewController {
             self.audioPlayer.play()
         }catch{}
 
+    }
+    
+    func initialize(passedValue: Int){
+        musicArtistName.text = podCastInfo[passedValue].description!
+        musicTrackName.text = podCastInfo[passedValue].title!
+        
+        if let fileName = podCastInfo[passedValue].imgUrl{
+          let urlString = URL(string:(fileName))?.lastPathComponent
+          musicImage.image = DocumentDirectory.getImage(fileName:urlString!+String(passedValue)+".jpg")
+          getSong()
+        }
     }
     
     override func didReceiveMemoryWarning() {

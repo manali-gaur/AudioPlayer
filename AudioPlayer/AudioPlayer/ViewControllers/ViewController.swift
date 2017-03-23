@@ -63,8 +63,8 @@ extension ViewController:UITableViewDataSource,UITableViewDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "yourSegueIdentifer") {
             
-            let navController = segue.destination as! UINavigationController
-            let detailController = navController.topViewController as! MusicViewController
+           // let navController = segue.destination as! UINavigationController
+            let detailController = segue.destination as! MusicViewController
             
             detailController.passedValue = tblView.indexPathForSelectedRow?.row
             detailController.podCastInfo = podCastInfo
